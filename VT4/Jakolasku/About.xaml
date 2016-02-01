@@ -1,0 +1,17 @@
+﻿<Window x:Class="Jakolasku.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About"
+        Height="164.706"
+        Width="472.059">
+    <Grid>
+        <Label Content="Jakolaskuohjelma"
+               HorizontalAlignment="Left"
+               Margin="71,34,0,0"
+               VerticalAlignment="Top"
+               Width="320"
+               Height="58"
+               FontSize="36" />
+
+    </Grid>
+</Window>

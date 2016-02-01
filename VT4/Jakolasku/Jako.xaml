@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Jakolasku.Jako"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:oma="clr-namespace:Jakolasku"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Height="203"
+             Width="243"
+             x:Name="ikkuna">
+    <Grid Margin="0,0,10,10">
+        <Button Content="Jaa"
+                HorizontalAlignment="Left"
+                Margin="84,84,0,0"
+                VerticalAlignment="Top"
+                Width="76"
+                Click="Button_Click" />
+        <Label Content="Jaettava"
+               HorizontalAlignment="Left"
+               Margin="43,10,0,0"
+               VerticalAlignment="Top" />
+        <TextBox x:Name="JaettavaTextBox"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="43,41,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="53">
+            <TextBox.Text>
+                <!-- Päivitetään TextBoxin sisältö Laskuri-propertyyn mutta ei itse huomioida muutoksia Laskuri-Propertyn arvoissa -->
+                <Binding ElementName="ikkuna"
+                         Path="Jaettava"
+                         Mode="OneWayToSource"
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Content="Jakaja"
+               HorizontalAlignment="Left"
+               Margin="145,10,0,0"
+               VerticalAlignment="Top" />
+        <TextBox x:Name="JakajaTextBox"
+                 HorizontalAlignment="Left"
+                 Height="23"
+                 Margin="145,41,0,0"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Top"
+                 Width="41">
+            <TextBox.Text>
+                <!-- Päivitetään TextBoxin sisältö Laskuri-propertyyn mutta ei itse huomioida muutoksia Laskuri-Propertyn arvoissa -->
+                <Binding ElementName="ikkuna"
+                         Path="Jakaja"
+                         Mode="OneWayToSource"
+                         UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <ExceptionValidationRule />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <Label Content="Tulos"
+               HorizontalAlignment="Left"
+               Margin="10,116,0,0"
+               VerticalAlignment="Top" />
+        <Label x:Name="JakoTulos"
+               Content="0"
+               HorizontalAlignment="Left"
+               Margin="103,116,0,0"
+               VerticalAlignment="Top" />
+
+    </Grid>
+</UserControl>

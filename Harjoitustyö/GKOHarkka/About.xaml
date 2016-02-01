@@ -1,0 +1,11 @@
+﻿<Window x:Class="GKOHarkka.About"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tietoja" Height="124.882" Width="285.059">
+    <StackPanel Margin="10,10,0,0" >
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Breakthrough/Tammi -lautapeli" VerticalAlignment="Top" Margin="0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Tekijä: Santeri Rusila" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Versio: 1.0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Päiväys 12.12.2014" VerticalAlignment="Top"/>
+    </StackPanel>
+</Window>

@@ -1,0 +1,138 @@
+﻿<Window x:Class="Viikkotehtava5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow"
+        x:Name="ikkuna"
+        Height="350"
+        Width="525"
+        BorderBrush="Black" xmlns:oma="clr-namespace:Viikkotehtava5">
+    <Window.Resources>
+        <!--Muokkaillaan checkboxi uusiksi-->
+        <Style TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <Border Name="reunus" Background="#FFB26C19" BorderBrush="#FF493D35" BorderThickness="4" Padding="7" Margin="1">
+                            <Grid>
+                                <Rectangle Fill="#FF493D35"/>
+                                <Viewbox>
+                                    <ContentPresenter Name="kirjain" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                </Viewbox>
+                            </Grid>
+                        </Border>
+                        <!--Nämä triggerit vaihtavat värejä sen mukaan onko hiiri päällä tai onko checkboxi valittuna-->
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Padding" TargetName="reunus" Value="0" />
+                                <Setter Property="BorderThickness" TargetName="reunus" Value="0" />
+                                <Setter Property="TextBlock.FontWeight" TargetName="kirjain" Value="Bold"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="BorderBrush" TargetName="reunus" Value="#BDB8AF"/>
+                                <Setter Property="Background" TargetName="reunus" Value="White"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsMouseOver" Value="True" />
+                                    <Condition Property="IsChecked" Value="True" />
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Padding" TargetName="reunus" Value="0" />
+                                <Setter Property="BorderThickness" TargetName="reunus" Value="0" />
+                                <Setter Property="TextBlock.FontWeight" TargetName="kirjain" Value="Bold"/>
+                                <Setter Property="BorderBrush" TargetName="reunus" Value="#FF493D35"/>
+                                <Setter Property="Background" TargetName="reunus" Value="#FFB26C19"/>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Näin esitetään henkilön tiedot listboxissa-->
+        <DataTemplate DataType="{x:Type oma:Henkilo}" x:Key="nimilista">
+            <Border BorderThickness="5" BorderBrush="Brown"
+             Name="border" Padding="0" Margin="0"  HorizontalAlignment="Stretch">
+                <StackPanel Orientation="Vertical" Name="panel">
+                    <TextBlock Padding="2" Text="{Binding Path=Etunimi}" Name="textBlockEtunimi"/>
+                    <TextBlock Padding="2" Text="{Binding Path=Sukunimi}" Name="textBlockSukunimi"/>
+                    <TextBlock Padding="2" Text="{Binding Path=Ika}" Name="textBlockIka"/>
+                    <TextBlock Padding="2" Text="{Binding Path=Kansallisuus}" Name="textBlockKansallisuus"/>
+                </StackPanel>
+            </Border>
+            <DataTemplate.Triggers>
+                <!--Vaihdetaan fontti boldatuksi jos hiiri viedään päälle-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="TextBlock.FontWeight" TargetName="textBlockEtunimi" Value="Bold" />
+                    <Setter Property="TextBlock.FontWeight" TargetName="textBlockSukunimi" Value="Bold" />
+                </Trigger>
+                <!--Tämä datatriggeri vaihtaa laatikoitten taustaväriä henkilön maan mukaan-->
+                <DataTrigger Binding="{Binding Path=Kansallisuus}" Value="USA">
+                    <DataTrigger.Setters>
+                        <Setter Property="Background" Value="Yellow" TargetName="panel" />
+                    </DataTrigger.Setters>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Kansallisuus}" Value="Kanada">
+                    <DataTrigger.Setters>
+                        <Setter Property="Background" Value="Cyan" TargetName="panel" />
+                    </DataTrigger.Setters>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=Kansallisuus}" Value="Englanti">
+                    <DataTrigger.Setters>
+                        <Setter Property="Background" TargetName="panel" Value="#FF1A9BB0" />
+                    </DataTrigger.Setters>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+    </Window.Resources>
+    <!--Gridi, jossa kirjaimet ja listboxi ovat-->
+    <Grid Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Luodaan Listboxi jonka sisälle henkilöiten tiedot tulevat-->
+        <ListBox Grid.Column="0" Grid.Row="0"  Grid.RowSpan="6" Background="White" ItemsSource="{Binding ElementName=ikkuna, Path=Henkilot}" ItemTemplate="{StaticResource nimilista}"></ListBox>
+        <!--Luodaan kirjaimet checkboxeihin-->
+        <CheckBox Grid.Column="1" Grid.Row="0">A</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="0">B</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="0">C</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="0">D</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="0">E</CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="1">F</CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="2">K</CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="3">P</CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="4">U</CheckBox>
+        <CheckBox Grid.Column="1" Grid.Row="5">Z</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="1">G</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="2">L</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="3">Q</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="4">V</CheckBox>
+        <CheckBox Grid.Column="2" Grid.Row="5">Å</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="1">H</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="2">M</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="3">R</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="4">W</CheckBox>
+        <CheckBox Grid.Column="3" Grid.Row="5">Ä</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="1">I</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="2">N</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="3">S</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="4">X</CheckBox>
+        <CheckBox Grid.Column="4" Grid.Row="5">Ö</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="1">J</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="2">O</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="3">T</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="4">Y</CheckBox>
+        <CheckBox Grid.Column="5" Grid.Row="5">!</CheckBox>
+    </Grid>
+</Window>

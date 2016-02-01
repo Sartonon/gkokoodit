@@ -1,0 +1,16 @@
+﻿<Window x:Class="GKOHarkka.Avustus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Avustus" Height="300" Width="300">
+    <Grid>
+        <StackPanel>
+            <TextBlock HorizontalAlignment="Center" TextWrapping="Wrap" Text="Avustus" VerticalAlignment="Top" FontSize="16" Margin="0,0,0,5" />
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Peli arpoo aloittajan" VerticalAlignment="Top" Margin="0,0,0,5"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Pelin nappuloita liikutetaan valitsemalla ensin liikutettava nappula ja sitten kohderutu." VerticalAlignment="Top" Margin="0,0,0,5"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Asetukset-dialogista voi vaihtaa nappuloiden ja ruutujen värit mieleisekseen." VerticalAlignment="Top" Margin="0,0,0,5"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Asetukset-dialogissa voi vaihtaa pelimuotoa sekä peliruudukon kokoa kesken pelin" VerticalAlignment="Top" Margin="0,0,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="Pelin valikosta voit pelin jälkeen lopputuloksen sekä pelissä tehdyt siirrot, voit myös tulostaa pelatun pelin" Margin="0,0,0,5"/>
+            <TextBlock TextWrapping="Wrap" Text="Pelin voi luovuttaa vastustajalle milloin vain, esimerkiksi kun tammessa loppuvat siirrot kesken" />
+        </StackPanel>
+    </Grid>
+</Window>

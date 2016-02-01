@@ -1,0 +1,59 @@
+﻿<Window x:Class="GKOHarkka.Asetukset"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Asetukset" Height="698.507" Width="320.032">
+    <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <StackPanel>
+                <GroupBox Header="Pelimuoto">
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton Name="tammi" Content="Tammi" Margin="10" Click="pelimuoto_Click"/>
+                        <RadioButton Name="breakthrough" Content="Breakthrough" Margin="10" Click="pelimuoto_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Ruudukon koko">
+                    <ComboBox Name="ruudukonKoko" Margin="10" MouseLeftButtonDown="ruudukonKoko_MouseLeftButtonDown">
+                        <ComboBoxItem>6x6</ComboBoxItem>
+                        <ComboBoxItem>7x7</ComboBoxItem>
+                        <ComboBoxItem>8x8</ComboBoxItem>
+                        <ComboBoxItem>9x9</ComboBoxItem>
+                        <ComboBoxItem>10x10</ComboBoxItem>
+                        <ComboBoxItem>11x11</ComboBoxItem>
+                        <ComboBoxItem>12x12</ComboBoxItem>
+                        <ComboBoxItem>13x13</ComboBoxItem>
+                        <ComboBoxItem>14x14</ComboBoxItem>
+                        <ComboBoxItem>15x15</ComboBoxItem>
+                        <ComboBoxItem>16x16</ComboBoxItem>
+                    </ComboBox>
+                </GroupBox>
+                <GroupBox Header="Nappuloiden värit">
+                    <StackPanel Margin="10">
+                        <Button Name="pelaaja1Vari1" Content="Pelaaja 1" Click="pelaaja1Vari_Click" />
+                        <Rectangle Stroke="Black" StrokeThickness="1" Name="pelaaja1Vari2" Height="15" Margin="10"></Rectangle>
+                        <Button Name="oletusVariPelaaja1" Content="Oletus" Margin="50,0,50,10" Click="oletusVariPelaaja1_Click"></Button>
+                        <Button Name="pelaaja2Vari1" Content="Pelaaja 2" Click="pelaaja2Vari_Click" />
+                        <Rectangle Stroke="Black" StrokeThickness="1" Name="pelaaja2Vari2" Height="15" Margin="10"></Rectangle>
+                        <Button Name="oletusVariPelaaja2" Content="Oletus" Margin="50,0,50,10" Click="oletusVariPelaaja2_Click"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Ruudukon värit">
+                    <StackPanel Margin="10">
+                        <Button Name="ruudukko1Vari1" Content="Väri 1" Click="vari1_Click" />
+                        <Rectangle Stroke="Black" StrokeThickness="1" Name="ruudukko1Vari2" Height="15" Margin="10"></Rectangle>
+                        <Button Name="oletusVariRuudukko1" Content="Oletus" Margin="50,0,50,10" Click="oletusVariRuudukko1_Click"></Button>
+                        <Button Name="ruudukko2Vari1" Content="Väri 2" Click="vari2_Click"/>
+                        <Rectangle Stroke="Black" StrokeThickness="1" Name="ruudukko2Vari2" Height="15" Margin="10"></Rectangle>
+                        <Button Name="oletusVariRuudukko2" Content="Oletus" Margin="50,0,50,10" Click="oletusVariRuudukko2_Click"></Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Tallenna/Peruuta">
+                    <StackPanel Orientation="Horizontal" Margin="10" >
+                        <Button Name="tallennaButton" Content="Tallenna" Margin="10" Click="ButtonTallenna_Click"/>
+                        <Button Name="kayta" Content="Käytä" Margin="10" Click="kayta_Click"/>
+                        <Button Name="peruutaButton" Content="Peruuta" Margin="10" Click="ButtonPeruuta_Click"/>   
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>

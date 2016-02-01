@@ -1,0 +1,32 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:GKOHarkka" x:Class="GKOHarkka.MainWindow"
+        Title="Breakthrough/Tammi-lautapeli" Height="500" Width="500" KeyDown="Window_KeyDown_1">
+    <Grid Name="peliGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Tiedosto">
+                <MenuItem Header="Uusi peli (Ctrl + U)" Click="MenuItem_Click" />
+                <MenuItem Name="tallennus" Header="Tallenna tiedostoon... (Ctrl + S)" Click="TallennaTiedostoon" IsEnabled="False" />
+                <MenuItem Name="tulostus" Header="Tulosta...  (Ctrl + P)" Click="TulostaLopputulos" IsEnabled="False"></MenuItem>
+                <MenuItem Name="luovutus" Header="Luovuta" IsEnabled="False">
+                    <MenuItem Name="luovutus1" Header="Luovuta (Pelaaja 1) (Ctrl + L + F1)" Click="luovutus1_Click"/>
+                    <MenuItem Name="luovutus2" Header="Luovuta (Pelaaja 2) (Ctrl + L + F2)" Click="luovutus2_Click" />
+                </MenuItem>
+                <MenuItem Header="Asetukset... (Ctrl + O)" Click="AvaaAsetukset" />
+                <MenuItem Icon="X" Header="Poistu (Ctrl + Q)" Click="MenuItem_Click_Sulje" />
+            </MenuItem>
+            <MenuItem Header="Apua">
+                <MenuItem Header="Avustus (Ctrl + A)" Click="MenuItem_Click_Avustus" />
+                <MenuItem Header="Pelin säännöt (Ctrl + R)" Click="MenuItem_ClickSaannot" />
+                <MenuItem Header="Tietoja (Ctrl + T)" Click="MenuItem_ClickAbout" />
+            </MenuItem>
+        </Menu>
+        <local:Pelikentta Grid.Row="1" x:Name="pelikentta" Loaded="pelikentta_Loaded" Click="pelikentta_Click" VuoroChanged="VuoroChanged"/>
+    </Grid>
+
+</Window>
